@@ -57,7 +57,12 @@ const doTranslation = debounce(
           q: input,
           target: languageCode,
         },
-        { cancelToken: cancelToken.token }
+        {
+          cancelToken: cancelToken.token,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+        }
       );
 
       callback(data.data.translations[0].translatedText);
